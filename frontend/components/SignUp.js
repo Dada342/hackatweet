@@ -20,6 +20,7 @@ function SignUp() {
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
+    console.log('click')
     fetch('https://hackatweet-wine.vercel.app/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
