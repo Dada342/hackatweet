@@ -4,9 +4,26 @@
 }
 
 .container {
-  border: rgba(114, 131, 148, 0.455) solid;
-  border-width: 1px 0px 0px 0px;
-  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  padding: 16px 20px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container:hover {
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .userInfo {
@@ -17,30 +34,56 @@
 
 .avatar {
   border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
 }
 
 .content {
-  margin: 0;
+  margin: 0 0 12px 0;
   margin-left: 12px;
+  flex: 1;
 }
 
 .like,
 .delete {
   cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .like {
-  margin-right: 5px;
-  color: white;
+  margin-right: 8px;
+  color: var(--text-secondary);
+}
+
+.like:hover {
+  color: var(--error-color);
+  background-color: rgba(224, 36, 94, 0.1);
+  transform: scale(1.1);
 }
 
 .delete {
   margin-left: 10px;
-  color: white;
+  color: var(--text-secondary);
+}
+
+.delete:hover {
+  color: var(--error-color);
+  background-color: rgba(224, 36, 94, 0.1);
+  transform: scale(1.1);
 }
 
 .name {
   font-family: "Mont";
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .name,
@@ -49,5 +92,6 @@
 }
 
 .greyText {
-  color: rgb(114, 131, 148);
+  color: var(--text-secondary);
+  font-weight: 400;
 }

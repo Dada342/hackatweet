@@ -40,8 +40,8 @@ function Login() {
         <Image src="/logo.png" alt="Logo" width={300} height={300} />
       </div>
       <div className={styles.rightSection}>
-        <Image src="/logo.png" alt="Logo" width={50} height={50} />
-        <h2 className={styles.title}>See what’s<br></br>happening</h2>
+        <Image src="/logo.png" alt="Logo" width={50} height={500} />
+        <h2 className={styles.title}>See what's<br></br>happening</h2>
         <h3>Join Hackatweet today.</h3>
         <div onClick={() => showSignUpModal()} className={styles.signUp}><a className={styles.signUpText}> Sign up</a></div>
         <p>Already have an account?</p>

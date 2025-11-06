@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../reducers/user';
 import Image from 'next/image';
 import styles from '../styles/SignUp.module.css';
+import { BACKEND_URL } from '../utils/config';
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -18,16 +19,32 @@ function SignUp() {
   const [firstName, setFirstName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = () => {
-    console.log('click')
-    fetch('https://hackatweet-wine.vercel.app/users/signup', {
+    setErrorMessage(''); // Reset error message
+    console.log('click', { firstName, username, password });
+    console.log('BACKEND_URL:', BACKEND_URL);
+    fetch(`${BACKEND_URL}/users/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ firstName, username, password }),
-    }).then(response => response.json())
+    })
+      .then(response => {
+        console.log('Response:', response);
+        return response.json();
+      })
       .then(data => {
-        data.result && dispatch(login({ token: data.token, username, firstName }));
+        console.log('Data:', data);
+        if (data.result) {
+          dispatch(login({ token: data.token, username, firstName }));
+        } else {
+          setErrorMessage(data.error || 'Une erreur est survenue');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setErrorMessage('Erreur de connexion au serveur');
       });
   };
 
@@ -35,6 +52,7 @@ function SignUp() {
     <div className={styles.container}>
       <Image src="/logo.png" alt="Logo" width={50} height={50} />
       <h3 className={styles.title}>Create your Hackatweet account</h3>
+      {errorMessage && <p style={{ color: 'var(--error-color)', fontSize: '14px', marginBottom: '16px', textAlign: 'center', fontWeight: '600' }}>{errorMessage}</p>}
       <input type="text" className={styles.input} onChange={(e) => setFirstName(e.target.value)} value={firstName} placeholder="Firstname" />
       <input type="text" className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
       <input type="password" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />

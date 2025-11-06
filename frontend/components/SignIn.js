@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../reducers/user';
 import Image from 'next/image';
 import styles from '../styles/SignIn.module.css';
+import { BACKEND_URL } from '../utils/config';
 
 function SignIn() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function SignIn() {
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    fetch('https://hackatweet-wine.vercel.app/users/signin', {
+    fetch(`${BACKEND_URL}/users/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),

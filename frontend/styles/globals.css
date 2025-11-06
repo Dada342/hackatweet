@@ -1,45 +1,95 @@
+:root {
+  --primary-color: #1DA1F2;
+  --primary-hover: #1A8CD8;
+  --primary-dark: #1877B6;
+  --secondary-color: #14171A;
+  --background-dark: #15202B;
+  --background-darker: #0F1419;
+  --text-primary: #FFFFFF;
+  --text-secondary: #8B98A5;
+  --border-color: #38444D;
+  --error-color: #E0245E;
+  --success-color: #17BF63;
+}
+
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--background-darker);
+  color: var(--text-primary);
 }
 
 * {
   box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
 }
 
 h2 {
   font-size: 68px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 h3 {
   font-size: 30px;
+  font-weight: 700;
 }
 
 p {
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 h2, h3, p, span, button {
-  color: white;
+  color: var(--text-primary);
 }
 
 input, textarea {
-  color: lightgray;
+  color: var(--text-primary);
 }
 
+/* Ant Design Modal Overrides */
 .ant-modal-header {
-  background-color: #15202b;
-  border-radius: 10px 10px 0px 0px;
+  background-color: var(--background-dark);
+  border-radius: 16px 16px 0px 0px;
   border: none;
 }
 
 .ant-modal-content {
-  background-color: #15202b;
-  border-radius: 10px;
+  background-color: var(--background-dark);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
-textarea::placeholder {
-  color: rgb(114, 131, 148);
+.ant-modal-close-x {
+  color: var(--text-secondary);
+}
+
+.ant-modal-close-x:hover {
+  color: var(--text-primary);
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
 }

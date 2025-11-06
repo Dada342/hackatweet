@@ -5,13 +5,18 @@
 
 .logo {
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .container {
   height: 100vh;
   width: 100vw;
   display: flex;
-  background-color: #15202B;
+  background-color: var(--background-darker);
 }
 
 .leftSection {
@@ -21,103 +26,150 @@
   height: 100vh;
   width: 23vw;
   padding: 25px 0px 25px 50px;
+  border-right: 1px solid var(--border-color);
 }
 
 .middleSection {
   height: 100vh;
   width: 45vw;
-  border: rgba(114, 131, 148, 0.455) solid;
-  border-width: 0px 1px 0px 1px;
-  overflow: scroll;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  background-color: var(--background-dark);
 }
 
 .middleSection::-webkit-scrollbar {
   background: transparent;
-  width: 0px;
+  width: 8px;
 }
 
 .rightSection {
   height: 100vh;
   width: 32vw;
+  padding: 20px;
+  background-color: var(--background-dark);
+  overflow-y: auto;
 }
 
 .userSection {
   display: flex;
   align-items: center;
+  padding: 12px 16px;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.userSection:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .avatar {
   border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
 }
 
 .userInfo {
   display: flex;
   flex-direction: column;
-  margin-top: 12px;
+  margin-top: 0;
   margin-left: 12px;
+  flex: 1;
 }
 
 .name {
-  margin-right: 5px;
+  margin: 0 5px 2px 0;
   font-size: 15px;
   font-family: "Mont";
-  margin-bottom: 0;
+  font-weight: 700;
 }
 
 .username {
-  font-size: 15px;
-  color: rgb(114, 131, 148);
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 .logout {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25px;
-  width: 75px;
+  height: 36px;
+  width: 90px;
   background-color: transparent;
-  border: 1px rgb(114, 131, 148) solid;
-  border-radius: 40px;
+  border: 2px solid var(--error-color);
+  border-radius: 9999px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
   margin-top: 10px;
+  color: var(--error-color);
+  transition: all 0.2s ease;
 }
 
 .logout:hover {
-  background-color: #24374a;
+  background-color: rgba(224, 36, 94, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(224, 36, 94, 0.2);
+}
+
+.logout:active {
+  transform: translateY(0);
 }
 
 .title {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 20px;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-dark);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(12px);
+  z-index: 10;
 }
 
 .searchBar {
-  height: 40px;
-  width: 80%;
-  margin-bottom: 25px;
-  border-radius: 30px;
-  border: none;
-  background-color: #1E2732;
-  padding: 10px;
+  height: 52px;
+  width: 90%;
+  margin-bottom: 20px;
+  border-radius: 26px;
+  border: 2px solid var(--border-color);
+  background-color: var(--background-darker);
+  padding: 0 20px;
   font-size: 15px;
   font-weight: 500;
-  color: lightgray;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
 .searchBar:focus {
   outline: none;
+  border-color: var(--primary-color);
+  background-color: var(--background-dark);
+  box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.1);
+}
+
+.searchBar:hover {
+  border-color: var(--text-secondary);
 }
 
 .searchSection {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  border-bottom: 8px solid var(--border-color);
 }
 
 .noTweet {
   text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  font-size: 16px;
 }

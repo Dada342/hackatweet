@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Tweet from './Tweet';
 import Trends from './Trends';
 import Image from 'next/image';
+import { BACKEND_URL } from '../utils/config';
 
 function Hashtag() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function Hashtag() {
 
     setQuery('#' + hashtag);
 
-    fetch(`https://hackatweet-wine.vercel.app/tweets/hashtag/${user.token}/${hashtag}`)
+    fetch(`${BACKEND_URL}/tweets/hashtag/${user.token}/${hashtag}`)
       .then(response => response.json())
       .then(data => {
         data.result && dispatch(loadTweets(data.tweets));

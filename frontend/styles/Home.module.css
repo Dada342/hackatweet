@@ -5,13 +5,18 @@
 
 .logo {
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .container {
   height: 100vh;
   width: 100vw;
   display: flex;
-  background-color: #15202B;
+  background-color: var(--background-darker);
 }
 
 .leftSection {
@@ -21,78 +26,112 @@
   height: 100vh;
   width: 23vw;
   padding: 25px 0px 25px 50px;
+  border-right: 1px solid var(--border-color);
 }
 
 .middleSection {
   height: 100vh;
   width: 45vw;
-  border: rgba(114, 131, 148, 0.455) solid;
-  border-width: 0px 1px 0px 1px;
-  overflow: scroll;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  background-color: var(--background-dark);
 }
 
 .middleSection::-webkit-scrollbar {
   background: transparent;
-  width: 0px;
+  width: 8px;
 }
 
 .rightSection {
   height: 100vh;
   width: 32vw;
+  padding: 20px;
+  background-color: var(--background-dark);
+  overflow-y: auto;
 }
 
 .userSection {
   display: flex;
   align-items: center;
+  padding: 12px 16px;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.userSection:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .avatar {
   border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
 }
 
 .userInfo {
   display: flex;
   flex-direction: column;
-  margin-top: 12px;
+  margin-top: 0;
   margin-left: 12px;
+  flex: 1;
 }
 
 .name {
-  margin-right: 5px;
+  margin: 0 5px 2px 0;
   font-size: 15px;
   font-family: 'Mont';
-  margin-bottom: 0;
+  font-weight: 700;
 }
 
 .username {
-  font-size: 15px;
-  color: rgb(114, 131, 148);
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 .logout {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25px;
-  width: 75px;
+  height: 36px;
+  width: 90px;
   background-color: transparent;
-  border: 1px rgb(114, 131, 148) solid;
-  border-radius: 40px;
+  border: 2px solid var(--error-color);
+  border-radius: 9999px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
   margin-top: 10px;
+  color: var(--error-color);
+  transition: all 0.2s ease;
 }
 
 .logout:hover {
-  background-color: #24374a;
+  background-color: rgba(224, 36, 94, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(224, 36, 94, 0.2);
+}
+
+.logout:active {
+  transform: translateY(0);
 }
 
 .title {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 20px;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-dark);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(12px);
+  z-index: 10;
 }
 
 .createSection {
@@ -101,23 +140,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 16px 20px;
+  border-bottom: 8px solid var(--border-color);
+  background-color: var(--background-dark);
 }
 
 .validateTweet {
-  width: 80%;
-  height: 80px;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 12px;
 }
 
 .input {
-  width: 80%;
-  height: 50px;
+  width: 100%;
+  min-height: 80px;
   background-color: transparent;
-  border-width: 0px 0px 1px 0px;
-  font-size: 20px;
-  font-weight: 500;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 12px 0;
+  resize: none;
+  color: var(--text-primary);
 }
 
 .input:focus {
@@ -128,18 +173,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
-  width: 90px;
-  margin-left: 15px;
-  margin-bottom: 15px;
-  background-color: #409BF1;
+  height: 36px;
+  min-width: 80px;
+  padding: 0 16px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   border: none;
-  border-radius: 40px;
+  border-radius: 9999px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 14px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(29, 161, 242, 0.3);
 }
 
 .button:hover {
-  background-color: #3384cf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(29, 161, 242, 0.4);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-color) 100%);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(29, 161, 242, 0.3);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
